@@ -23,11 +23,13 @@ import org.perses.grammar.c.CParserFacade;
 import org.perses.grammar.c.PnfCParserFacade;
 import org.perses.grammar.go.PnfGoParserFacade;
 import org.perses.grammar.java.JavaParserFacade;
+import org.perses.grammar.javascript.JavaScriptParserFacade;
 import org.perses.grammar.rust.PnfRustParserFacade;
 import org.perses.grammar.scala.PnfScalaParserFacade;
 import org.perses.grammar.c.LanguageC;
 import org.perses.grammar.go.LanguageGo;
 import org.perses.grammar.java.LanguageJava;
+import org.perses.grammar.javascript.LanguageJavaScript;
 import org.perses.grammar.rust.LanguageRust;
 import org.perses.grammar.scala.LanguageScala;
 import org.perses.reduction.ReducerFactory;
@@ -104,6 +106,7 @@ public class Main {
     builder.add(LanguageRust.INSTANCE, PnfRustParserFacade::new);
     builder.add(LanguageScala.INSTANCE, PnfScalaParserFacade::new);
     builder.add(LanguageJava.INSTANCE, JavaParserFacade::new);
+    builder.add(LanguageJavaScript.INSTANCE, JavaScriptParserFacade::new);
     builder.add(
         LanguageC.INSTANCE,
         cmd.algorithmControlFlags.useOptCParser ? CParserFacade::new : PnfCParserFacade::new);

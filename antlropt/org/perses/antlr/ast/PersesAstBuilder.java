@@ -80,7 +80,10 @@ public final class PersesAstBuilder {
         final String body = lastChild.getText();
         namedActions.add(new PersesNamedAction(name, body));
       } else {
-        throw new RuntimeException("Unhandled child: " + child);
+        // TODO (vinced): JavaScriptLexer.g4 contains: channels { ERROR }
+        // Unhandled child: channels {
+        // error(177): <empty>:510:19: ERROR is not a recognized channel name.
+        // throw new RuntimeException("Unhandled child: " + child);
       }
     }
     checkNotNull(rules, "No rules found in %s", root);
@@ -412,6 +415,10 @@ public final class PersesAstBuilder {
     if (PersesLexerCharSet.isLexerCharSet(ast)) {
       return new PersesLexerCharSet(ast.getText());
     }
+    if (PersesElementOptionsAst.isElementOptionsAst(ast)) {
+      return PersesElementOptionsAst.INSTANCE;
+    }
+
     throw new RuntimeException("Unhandled ast: " + ast + ", " + ast.getClass());
   }
 

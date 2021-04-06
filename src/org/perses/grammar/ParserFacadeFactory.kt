@@ -24,6 +24,8 @@ import org.perses.grammar.go.LanguageGo
 import org.perses.grammar.go.PnfGoParserFacade
 import org.perses.grammar.java.JavaParserFacade
 import org.perses.grammar.java.LanguageJava
+import org.perses.grammar.javascript.JavaScriptParserFacade
+import org.perses.grammar.javascript.LanguageJavaScript
 import org.perses.grammar.rust.LanguageRust
 import org.perses.grammar.rust.PnfRustParserFacade
 import org.perses.grammar.scala.LanguageScala
@@ -71,6 +73,7 @@ class ParserFacadeFactory private constructor(
       builder.add(LanguageScala) { PnfScalaParserFacade() }
       builder.add(LanguageJava) { JavaParserFacade() }
       builder.add(LanguageC) { PnfCParserFacade() }
+      builder.add(LanguageJavaScript) { JavaScriptParserFacade() }
       return builder
     }
   }

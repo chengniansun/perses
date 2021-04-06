@@ -76,4 +76,7 @@ public class DefaultAstVisitor extends AbstractAstVisitor {
 
   @Override
   protected void visit(PersesGrammar ast) {}
+
+  @Override
+  protected void visit(PersesElementOptionsAst ast) {}
 }

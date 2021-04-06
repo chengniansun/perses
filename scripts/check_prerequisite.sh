@@ -10,7 +10,8 @@ readonly TOOLS=("creduce" \
     "go" \
     "rustc" \
     "rustfmt" \
-    "scala")
+    "scala" \
+    "nodejs")
 
 missing=""
 for tool in "${TOOLS[@]}" ; do

@@ -96,6 +96,9 @@ public abstract class AbstractAstVisitor {
       case LEXER_RANGE_OPERATOR:
         visit((PersesRangeAst) ast);
         break;
+      case ELEMENT_OPTIONS:
+        visit((PersesElementOptionsAst) ast);
+        break;
       default:
         throw new RuntimeException("Unhandled type: " + ast);
     }
@@ -122,6 +125,8 @@ public abstract class AbstractAstVisitor {
   protected abstract void visit(PersesLexerCharSet ast);
 
   protected abstract void visit(PersesEpsilonAst ast);
+
+  protected abstract void visit(PersesElementOptionsAst ast);
 
   protected abstract void visit(PersesAlternativeBlockAst ast);
 

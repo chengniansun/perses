@@ -19,6 +19,7 @@ package org.perses.antlr.ast;
 public enum AstTag {
   GRAMMAR(Precedence.NONE),
   OPTIONS(Precedence.NONE),
+  ELEMENT_OPTIONS(Precedence.NONE),
   NAMED_ACTION(Precedence.NONE),
 
   RULE_DEFINITION_PARSER(Precedence.RULE),

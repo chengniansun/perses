@@ -1,8 +1,9 @@
-def _antlr_codegen(
+def antlr_codegen(
         name,
         parser_grammar_file,
         java_pkg_name,
         names_of_java_files_to_keep,
+        additional_source_files = [],
         lexer_grammar_file = None,
         deps = None):
     genrule_name = "%s_gen" % name
@@ -50,7 +51,7 @@ def _antlr_codegen(
     deps = deps or []
     native.java_library(
         name = name,
-        srcs = names_of_java_files_to_keep,
+        srcs = names_of_java_files_to_keep + additional_source_files,
         exports = deps,
         resources = grammar_files,
         deps = ["@maven//:org_antlr_antlr4_runtime"] + deps,
@@ -61,7 +62,7 @@ def antlr_codegen_lexer(
         lexer_grammar_file,
         java_pkg_name,
         lexer_java_file_name):
-    _antlr_codegen(
+    antlr_codegen(
         name = name,
         parser_grammar_file = lexer_grammar_file,
         java_pkg_name = java_pkg_name,
@@ -76,7 +77,7 @@ def antlr_codegen_parser(
         lexer_grammar_file = None,
         deps = None):
     deps = deps or []
-    _antlr_codegen(
+    antlr_codegen(
         name = name,
         parser_grammar_file = parser_grammar_file,
         java_pkg_name = java_pkg_name,
